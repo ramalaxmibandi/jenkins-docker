@@ -16,7 +16,7 @@ pipeline {
         stage('Build docker image'){
             steps{
                 script{
-                    sh 'docker build -t ramalaxmi/alpine:1.0 .'
+                    sh 'docker build -t ramalaxmi/devops-integration:1.0 .'
                 }
             }
         }
@@ -27,7 +27,7 @@ pipeline {
     }
        stage('Push image to Hub') {
            steps {
-                sh 'docker push lloydmatereke/jenkins-docker-hub'
+                sh 'docker push ramalami/devops-integration:1.0'
                }
            }
 
