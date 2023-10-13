@@ -1,5 +1,8 @@
 pipeline {
     agent any
+  environment {
+    DOCKERHUB_CREDENTIALS = credentials('dockerhub')
+  }
     tools{
         maven 'mymaven'
     }
@@ -17,17 +20,16 @@ pipeline {
                 }
             }
         }
-        stage('Push image to Hub'){
-            steps{
-                script{
-                   withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
-                   sh 'docker login -u ramalaxmi -p ${Tinku*19}'
-
-}
-                   sh 'docker push ramalaxmi/devops-integration:1.0'
-                }
-            }
-        }
+        stage('Login') {
+            steps {
+                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+      }
+    }
+       stage('Push image to Hub') {
+           steps {
+                sh 'docker push lloydmatereke/jenkins-docker-hub'
+               }
+           }
 
     }
 }
