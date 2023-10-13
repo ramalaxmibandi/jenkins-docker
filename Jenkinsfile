@@ -27,7 +27,7 @@ pipeline {
     }
        stage('Push image to Hub') {
            steps {
-                sh 'docker push ramalami/devops-integration:1.0'
+                sh 'docker push ramalaxmi/devops-integration:1.0'
                }
            }
 
