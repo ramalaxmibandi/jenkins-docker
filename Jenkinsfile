@@ -16,7 +16,7 @@ pipeline {
         stage('Build docker image'){
             steps{
                 script{
-                    sh 'docker build -t ramalaxmi/devops-integration:1.0 .'
+                    sh 'docker build -t ramalaxmi/devops-integration .'
                 }
             }
         }
